@@ -19,7 +19,6 @@
 
 ### 富饶泥土
 
-- **不能被锄头耕成耕地**（本条机制已按要求删除：富饶泥土只作为「超级土壤」使用，锄头对它无效）。
 - 可以**直接种植作物**而无需耕地：小麦 / 胡萝卜 / 马铃薯 / 甜菜（`CropBlock`）、南瓜 / 西瓜茎（`StemBlock`）、**甘蔗**（无需水源）、**海泡菜**、**仙人掌**都能直接种在富饶泥土上。
 - **海泡菜与仙人掌正常生长**：仙人掌的生长逻辑本身不检查下方方块，富饶泥土只需通过 `CactusBlockMixin` 放行放置判定；海泡菜原本唯一的生长途径是骨粉，而原版要求下方是珊瑚块，`SeaPickleBlockMixin` 为「下方是富饶泥土」补上了分支（数量 +1，最多 4 个），富饶泥土每 10 tick 的催熟会让它们持续生长。
 - **无视亮度**：在富饶泥土上种植作物不受亮度限制，且作物在黑暗中也会继续生长（`CropBlockMixin` / `StemBlockMixin` 把随机刻的亮度门槛替换掉）。
@@ -33,10 +32,6 @@
 - **奇点块**：需要**下界合金**级。原版 1.20.1 没有「下界合金」挖掘等级标签，因此它同时使用两套机制：
   1. 加入原版 `minecraft:needs_diamond_tool` 标签（钻石级起步、不使用正确工具不掉落）；
   2. 加入自定义标签 `mbga:needs_netherite_tool`，由 `MiningToolItemMixin` 在 `MiningToolItem#isSuitableFor` 上追加第四档判定：挖掘等级低于下界合金（4）的工具一律视为「不合适」，即不会掉落。
-
-### 奇点块的接触判定
-
-奇点块使用 `noCollision()`，但原版 `Entity#checkBlockCollision` 是按「实体碰撞箱覆盖到的方块坐标」回调 `onEntityCollision` 的，因此接触判定照常工作；同一实体每 5 tick 只结算一次（按世界刻记录）。
 
 ## 物品
 
@@ -55,11 +50,9 @@
 | 翡翠护符 | `jade_charm` | 持续获得「村庄英雄」；受伤时有 25% 概率完全免疫并获得 10 秒「生命恢复Ⅰ」。 |
 | 生物乙醇护符 | `bioethanol_charm` | 消除「醉酒」状态；持有「超级燃烧」时额外获得「生命恢复Ⅰ」「抗性提升Ⅰ」「力量Ⅰ」「跳跃提升Ⅰ」。 |
 | Tap / Flick / Drag / Hold | `tap` `flick` `drag` `hold` | 四把武器，各自独特的命中音效（Hold 与 Tap 同音效）。 |
-| 余烬剑 / 镐 / 斧 / 锹 / 锄 | `ember_sword` `ember_pickaxe` `ember_axe` `ember_shovel` `ember_hoe` | 余烬工具（数值与下界合金同级）。 |
-| 余烬头盔 / 胸甲 / 护腿 / 靴子 | `ember_helmet` `ember_chestplate` `ember_leggings` `ember_boots` | 余烬盔甲（护甲 3/8/6/3、韧性 3、击退抗性 0.1）。 |
+| 余烬剑 / 镐 / 斧 / 锹 / 锄 | `ember_sword` `ember_pickaxe` `ember_axe` `ember_shovel` `ember_hoe` | 余烬工具（数值略高于下界合金）。 |
+| 余烬头盔 / 胸甲 / 护腿 / 靴子 | `ember_helmet` `ember_chestplate` `ember_leggings` `ember_boots` | 余烬盔甲（数值略高于下界合金）。 |
 | 半成品 | `incomplete_space_superpressor` `incomplete_diamond` `incomplete_gemstone` `incomplete_bioethanol_charm` | 序列组装的中间产物。 |
-
-（原有物品：生物乙醇茶饮、喷溅式生物乙醇、瓶中火、火箭、奇点。）
 
 ### 护符
 
@@ -75,7 +68,6 @@
   - **重铸**：装备者在火或熔岩中时，每 tick 恢复 1 点耐久。
 - 结算在 `com.mbga.event.EmberGearHandler`，只对**装备中**的余烬物品生效（主手 / 副手 / 四个盔甲槽）。
 - 数值**高于**下界合金：工具提示伤害 +2（剑 9 / 镐 7 / 斧 11 / 锹 7.5 / 锄 2）、耐久 +1000（3031）、盔甲护甲与韧性各 +2（护甲 5/10/8/5、韧性 5.0、击退抗性 0.1）；物品本身免疫火焰与熔岩（`fireproof`），但**玩家不会**因此免疫火焰伤害。
-- 盔甲贴图使用自绘的 `assets/minecraft/textures/models/armor/mbga_ember_layer_1.png` / `_layer_2.png`（`ArmorMaterial#getName()` 返回 `mbga_ember`，因此在 `assets/minecraft/` 命名空间下）；物品图标同样使用自绘贴图。
 
 ### 武器 Tap / Flick / Drag / Hold
 
@@ -87,7 +79,7 @@
 | Hold | 8 | 1.8（略快于剑） | `mbga:weapon.tap`（与 Tap 一致） |
 
 - 「提示攻击伤害」指物品栏里显示的攻击伤害数值（玩家实际命中伤害会再加上 1 点基础伤害，与剑一致）。
-- 音效在命中时播放（`postHit`，服务端广播）。音频文件来自 `libs/`，已转换为 OGG Vorbis 并放入 `assets/mbga/sounds/weapon/{tap,flick,drag}.ogg`，由 `assets/mbga/sounds.json` 声明。
+- 音效在命中时播放（`postHit`，服务端广播）。
 
 ## 新增加工方式：时移
 
@@ -115,14 +107,10 @@
 
 ## 配方
 
-### 原有配方
-
 - **生物乙醇茶饮**：注液——玻璃瓶 + 200 mB 生物乙醇（`createaddition:bioethanol`）。
 - **喷溅式生物乙醇**：混合搅拌——生物乙醇茶饮 + 火药。
 - **瓶中火**：无序合成——喷溅式生物乙醇 + 打火石（消耗 1 点耐久）。
 - **火箭**：有序合成——8 支箭围绕 1 个瓶中火。
-
-### 新增配方（对应新任务清单）
 
 | # | 类型 | 内容 |
 | --- | --- | --- |
@@ -146,20 +134,6 @@
 | 18 | 压块塑形 | 固态石油×3 + 瓶中火 + 下界合金锭，**需要超级加热** → 余烬金属 |
 | 19 | 有序合成 | 2×2 奇点 → 奇点块；3×3 余烬金属 → 余烬金属块；皓蓝石/绯红岩/赭金砂 ×2 + 木棍（竖排）→ Tap / Flick / Drag；皓蓝石 ×3（竖排）→ Hold |
 | 20 | 锻造 | 奇点 + {四种宝石} + 光辉石 → 对应宝石护符；奇点 + 下界合金升级模板 + 余烬金属块 → 余烬升级模板；余烬升级模板 + {下界合金装备/工具} + 余烬金属 → 对应余烬装备/工具 |
-
-> **Create 的流体单位**：配方的 `amount` 并不是 mB，而是 **mB × 81**（对照 Create 自带数据：250 mB 牛奶写作 `20250`，一瓶药水写作 `2025`）。本模组所有含流体的配方都按此换算：1000 mB → `81000`、250 mB → `20250`、100 mB → `8100`、10 mB → `810`、1 mB → `81`。
->
-> **已知偏差（Create 引擎限制）**：Create 的盆配方（压块塑形 / 混合搅拌）**最多只能写 9 个物品原料，并且不支持 `count`**（`Ingredient` 不含数量）。因此配方 8 / 9 / 11 按「保留空间超压器作为原料、材料数量降为 8」实现；配方 5 使用 9 个空间超压器（上限）。其余条目均按原文实现。
->
-> 配方 2 的 1000 次循环是任务原文要求（每次循环 = 一次注液 + 一次辊压），实际游戏内会非常耗时。
-
-## 第三轮更新（甜甜圈 / 联动 / 风车 / 进度）
-
-### 修复
-
-- **批量时移**：`TimeShiftProcessingType#process` 现在按<b>输入堆叠数量</b>逐个结算配方（并合并同类产出），一整叠原料不再只产出一份。
-- **流体量**：所有含流体的配方按 Create 的真实单位（mB × 81）重写，详见上方「Create 的流体单位」。
-- **配方 13** 的产出改为对应的**矿石方块** ×3。
 
 ### 新增食物（10 种）
 
@@ -185,16 +159,16 @@
 - **JEI 时移配方支持**：通过 `jei_mod_plugin` 客户端入口注册 `mbga:time_shift` 配方类别（输入 → 多个带概率的产出），催化剂为奇点块。JEI 为**可选**依赖（`recommends`），专用服务器不会加载该入口。
 - **经验甜甜圈**（附魔工业）：见上表。
 
-### 新增应力源（6 档风车，均为完整方块）
+### 新增应力源（6 档风车）
 
-与创造马达同类的应力源：**传动杆从 `FACING` 面接出**（旋转轴 = `FACING` 的轴），朝向可以用**扳手**像其他机械动力装置一样旋转（见下）。`calculateAddedStressCapacity()` 返回的是「每 RPM 的 SU」，因此网络总应力 = 每 RPM 应力 × 转速。
+与创造马达同类的应力源：**传动杆从 `FACING` 面反面接出**（旋转轴 = `FACING` 的轴），朝向可以用**扳手**像其他机械动力装置一样旋转（见下）。`calculateAddedStressCapacity()` 返回的是「每 RPM 的 SU」，因此网络总应力 = 每 RPM 应力 × 转速。
 
 朝向与旋转方向：
 
 - **放置**：优先与相邻的动能方块对接（`getPreferredFacing`），与创造电机一致。
 - **扳手右键 = 旋转朝向**：`WindmillBlock` 继承 `DirectionalKineticBlock`（带 `FACING`），Create 的 `IWrenchable#onWrenched` 默认实现会按「点击的那个面」决定绕哪根轴转 90°，并在旋转后把发电者重新激活（`GeneratingKineticBlockEntity#reActivateSource`）。**潜行 + 扳手**则是拆下（按战利品表掉落），这也是 Create 的通用行为。
 - **空手（或非扳手物品）右键 = 只翻转旋转方向**：切换自定义的 `REVERSED` 状态，不改转速、不改朝向。
-- **模型约定**：贴图里的**底面**（`windmill_bottom`，接口那张）永远朝着 `FACING`——也就是接传动杆的那一面看到的一定是接口贴图，叶片（`_top`）在相反的一面。blockstate 因此用的是「模型底面朝向 FACING」的旋转（原版 `end_rod` 那套映射取反），由 `.mbga-tools/gen-windmill-blockstates.ps1` 生成 12 个变体。
+- **模型约定**：贴图里的**底面**（`windmill_bottom`，接口那张）永远朝着 `FACING`——也就是接传动杆的那一面看到的一定是接口贴图，叶片（`_top`）在相反的一面。blockstate 因此用的是「模型底面朝向 FACING」的旋转（原版 `end_rod` 那套映射取反）。
 
 | 方块 | ID | 转速 | 总应力（SU） | 每 RPM | 配方 |
 | --- | --- | --- | --- | --- | --- |
@@ -213,16 +187,6 @@
 - **隐藏成就 4 个**（challenge + 隐藏）：超越瞬间的极限、迷失、目不能追，耳未可及、欲火焚身。
 - 物品 / 状态效果类的进度完全由数据包触发；需要代码判定的（右键转移超级燃烧、火箭射船、狐狸爆燃、效率Ⅵ挖黑曜石、吃奇点 / 被时移、340 m/s、全套余烬挨火焰伤害）由 `MBGAAdvancementHandler` 调用 `grantCriterion` 授予（criteria 使用 `minecraft:impossible`，名字为 `code`）。
 
-## 第四轮修订（贴图 / 渲染 / 配方）
-
-- **修复：富饶泥土放置后不渲染**（表现为「贴图缺失」）。`FertileDirtBlock` 继承自 `BlockWithEntity`，而后者把渲染类型写死成 `BlockRenderType.INVISIBLE`（其设计前提是「外观交给方块实体渲染器」）。现在显式覆盖 `getRenderType()` 返回 `BlockRenderType.MODEL`。物品栏里的图标一直正常，所以这个 bug 只在**放置到世界后**出现。
-- **修复：6 档风车放置后是紫黑缺失模型**，与上一条同一类问题但成因不同——`WindmillBlock` 原本继承 Create 的 `DirectionalKineticBlock`（自带 6 向 `FACING`）并额外声明了 `REVERSED`，方块状态因此有 `6 × 2 = 12` 种组合，而 blockstate 里只写了 `""`：变体匹配是**精确匹配**，`""` 匹配不到任何真实状态，于是所有风车都落到「缺失模型」上。
-- **风车输出面 / 朝向（最终形态）**：`WindmillBlock` 继承 Create 的 `DirectionalKineticBlock`，传动杆从 `FACING` 面接出、旋转轴 = `FACING` 的轴，朝向可用扳手旋转（`IWrenchable` 默认行为）；模型方面约定「**贴图的底面**（`windmill_bottom`）朝向 `FACING`」，所以 blockstate 用「模型底面朝向 FACING」的旋转（原版 `end_rod` 映射取反），共 `6 × 2 = 12` 个变体，由 `.mbga-tools/gen-windmill-blockstates.ps1` 生成。
-  > 中间曾短暂改成「固定底面出力、没有朝向」，随后按要求回滚为带 `FACING` 的版本。
-- **甜甜圈改为批量烟熏**：配方由 `data/mbga/recipes/smelting/donut.json`（`minecraft:smelting`）改为 `data/mbga/recipes/smoking/donut.json`（`minecraft:smoking`，`cookingtime` 100）。Create 的**批量熔炼**鼓风机认的是 `minecraft:smelting` / `minecraft:blasting`（见 `AllFanProcessingTypes$BlastingType`），**批量烟熏**只认 `minecraft:smoking`，所以原来的配方会被鼓风机当熔炼处理。改动后：烟熏炉 / 鼓风机批量烟熏可产出甜甜圈，普通熔炉不再产出（避免同时存在两种配方时又被鼓风机按熔炼处理）。
-- **分面贴图**：贴图名带 `_top` / `_side` / `_bottom` 的方块改用 `minecraft:block/cube_bottom_top`——强化深板岩 3 面各自独立；6 档风车各有自己的 `_top` / `_side`，底面共用 `windmill_bottom`。
-- **半成品贴图复用基底材料**：`incomplete_*` 不再需要单独画图，`layer0` 直接指向配方基底材料的贴图（潜影盒 / 煤炭 / 晶洞 / 坚固板 / 甜甜圈 / 风车轴承）。
-
 ## 构建
 
 需要 JDK 17 与 Fabric 开发环境（Gradle + Fabric Loom，本仓库已配置 `fabric-loom 1.10.5` / `Gradle 8.14`）。
@@ -237,12 +201,8 @@ Create Fabric 0.5.1-j（1.20.1）没有可靠的公共 Maven 源，因此本仓�
 
 ## 说明
 
-- 运行时依赖（均已声明在 `src/main/resources/fabric.mod.json`）：`create`（>=0.5.1-j-build.1631）、`createaddition`（>=1.2.6），以及第三轮联动所需的 `farmersdelight`（>=1.20.1-2.4.0）、`createoreexcavation`（>=1.5.4）、`create_enchantment_industry`（>=1.2.16）——这三者属于硬依赖；**JEI**（>=15.20.0）为可选（`recommends`，仅在客户端加载 `jei_mod_plugin` 入口）。配方还引用了 Create 的 `create:asurine` / `create:crimsite` / `create:ochrum` / `create:refined_radiance` / `create:sturdy_sheet` / `create:sweet_roll` / `create:chocolate`。
+- 运行时依赖（均已声明在 `src/main/resources/fabric.mod.json`）：`create`（>=0.5.1-j-build.1631）、`createaddition`（>=1.2.6），以及联动所需的 `farmersdelight`（>=1.20.1-2.4.0）、`createoreexcavation`（>=1.5.4）、`create_enchantment_industry`（>=1.2.16）——这三者属于硬依赖；**JEI**（>=15.20.0）为可选（`recommends`，仅在客户端加载 `jei_mod_plugin` 入口）。配方还引用了 Create 的 `create:asurine` / `create:crimsite` / `create:ochrum` / `create:refined_radiance` / `create:sturdy_sheet` / `create:sweet_roll` / `create:chocolate`。
 - 编译期依赖 Create 通过 `libs/` 下的本地 jar 提供；如需更换版本，请替换 `libs/` 中的 jar 并同步修改 `gradle.properties` 里的 `create_version`。
-- **贴图状态**（可用 `.mbga-tools/audit-textures.ps1` 复核）：物品贴图、方块贴图（含奇点块的 `assets/mbga/textures/block/singularity_block.png`）、3 张状态效果图标（`textures/mob_effect/`）、2 张余烬盔甲层（`assets/minecraft/textures/models/armor/mbga_ember_layer_*.png`）**均已就位，没有缺失的贴图引用**。约定：
-  - 贴图名带 `_top` / `_side` / `_bottom` 的方块使用 `minecraft:block/cube_bottom_top` 分面模型（强化深板岩 3 面；6 档风车各有 `_top` / `_side`，底面共用 `windmill_bottom`）；6 档风车因为只从底面出力，模型不做任何旋转，blockstate 只有 `REVERSED` 两个变体（由 `.mbga-tools/gen-windmill-blockstates.ps1` 生成）；
-  - 序列组装半成品（`incomplete_*`）**不单独画贴图**，直接复用配方基底材料的贴图（潜影盒 / 煤炭 / 晶洞 / 坚固板 / 甜甜圈 / 风车轴承）；
-  - 画好新贴图后运行 `.mbga-tools/wire-textures.ps1` 会自动把模型指到 `mbga:` 路径。细节见 [`TEXTURES.md`](TEXTURES.md)。
 - **燃烧时长的原版限制**：原版熔炉把 `BurnTime` 以 short 存进 NBT，因此超过 32767 的燃烧时长（固态生物乙醇 1,638,400 tick、固态石油 1,280,000 tick）在存档 / 重新加载后会被截断；Fabric 的 `FuelRegistry` 也会为超过 32767 的值打印警告。
 - **`mbga:singularity` 伤害类型**加入了 `minecraft:bypasses_armor`、`bypasses_invulnerability`、`bypasses_resistance` 三个伤害类型标签（与「虚空伤害」`out_of_world` 一致）。
 - Create 在加载时会为流体量正好为 1000 的配方打印 `Suspicious fluid amount` 警告（本模组的注液 / 压块配方按任务原文使用 1B = 1000 mB），这只是提示，不影响配方生效。
@@ -254,4 +214,3 @@ Create Fabric 0.5.1-j（1.20.1）没有可靠的公共 Maven 源，因此本仓�
   - `SugarCaneBlockMixin`：允许甘蔗直接种在富饶泥土上而无需水源；
   - `CactusBlockMixin`：允许仙人掌种在富饶泥土上并正常生长；
   - `SeaPickleBlockMixin`：让海泡菜能在富饶泥土上生长。
-- `.mbga-tools/` 下是开发辅助脚本（仅在工作区内运行，不影响构建产物）：`compile.ps1`（受限环境下 Gradle 无法写 `~/.gradle` 时用 javac 做快速编译自检）、`gen-resources.ps1` / `gen-resources2.ps1`（生成方块状态 / 模型 / 战利品表 / 标签 / 配方的脚本）、`gen-windmill-blockstates.ps1`（生成 6 档风车的 `FACING × REVERSED` 共 12 个 blockstate 变体）、`wire-textures.ps1`（贴图放好后把模型 JSON 的贴图键自动指向 `mbga:` 路径）、`audit-textures.ps1`（只读审计：JSON 可解析性、贴图引用是否存在、blockstate 变体是否覆盖全部状态、有没有白画的贴图、还有哪些模型在用外部占位贴图）。
