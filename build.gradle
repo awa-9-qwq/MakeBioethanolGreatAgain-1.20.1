@@ -1,0 +1,83 @@
+plugins {
+    id 'fabric-loom' version "${loom_version}"
+    id 'maven-publish'
+}
+
+version = project.mod_version
+group = project.maven_group
+
+base {
+    archivesName = project.archives_base_name
+}
+
+repositories {
+    // Create Fabric 0.5.1-j (for MC 1.20.1) has no reliable public Maven,
+    // so we depend on the local jar in ./libs (see README.md).
+}
+
+dependencies {
+    minecraft "com.mojang:minecraft:${project.minecraft_version}"
+    mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
+    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+
+    // Fabric API. This is technically optional, but you probably want it anyway.
+    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+    // Create: compile dependency for the Blaze Burner interaction (local jar).
+    modImplementation files("libs/create-fabric-${project.create_version}.jar")
+
+    // Cross-mod integration targets. The jars are the ones shipped in run/mods for the dev
+    // environment (the modpack this addon targets); Loom remaps them to yarn for compilation.
+    modCompileOnly files("run/mods/0_FD_FarmersDelight-1.20.1-2.4.0+refabricated.jar")
+    modCompileOnly files("run/mods/C_createoreexcavation-fabric-1.20-1.5.4.jar")
+    modCompileOnly files("run/mods/C_create_enchantment_industry-1.2.16.jar")
+    modCompileOnly files("run/mods/RS_jei-1.20.1-fabric-15.20.0.112.jar")
+
+    // Porting Lib ships as nested jars inside Create, but Create's kinetic API and Farmer's Delight's
+    // KnifeItem expose Porting Lib types, so they must be on the compile classpath too.
+    modCompileOnly fileTree(dir: "libs/portinglib", include: ["*.jar"])
+}
+
+processResources {
+    inputs.property "version", project.version
+    filteringCharset "UTF-8"
+
+    filesMatching("fabric.mod.json") {
+        expand "version": project.version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    // ensure that the encoding is set to UTF-8, no matter what the system default is
+    it.options.encoding = "UTF-8"
+    it.options.release = 17
+}
+
+java {
+    // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
+    // if it is present.
+    withSourcesJar()
+
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+jar {
+    from("LICENSE") {
+        rename { "${it}_${project.base.archivesName}" }
+    }
+}
+
+// configure the maven publication
+publishing {
+    publications {
+        create("mavenJava", MavenPublication) {
+            artifactId = project.archives_base_name
+            from components.java
+        }
+    }
+
+    repositories {
+        // Add repositories to publish to here.
+    }
+}
