@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "mbga:ember_knife"
+    },
+    "title": {
+      "translate": "advancements.mbga.ember_knife.title"
+    },
+    "description": {
+      "translate": "advancements.mbga.ember_knife.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "mbga:root",
+  "criteria": {
+    "get_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": [ "mbga:ember_knife" ] }
+        ]
+      }
+    }
+  }
+}

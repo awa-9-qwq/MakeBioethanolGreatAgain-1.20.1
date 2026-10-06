@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "mbga:giant_windmill_group"
+    },
+    "title": {
+      "translate": "advancements.mbga.giant_windmill_group.title"
+    },
+    "description": {
+      "translate": "advancements.mbga.giant_windmill_group.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "mbga:root",
+  "criteria": {
+    "get_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": [ "mbga:giant_windmill_group" ] }
+        ]
+      }
+    }
+  }
+}

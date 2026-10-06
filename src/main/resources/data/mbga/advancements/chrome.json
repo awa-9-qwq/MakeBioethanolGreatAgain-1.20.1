@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "mbga:chrome"
+    },
+    "title": {
+      "translate": "advancements.mbga.chrome.title"
+    },
+    "description": {
+      "translate": "advancements.mbga.chrome.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "mbga:root",
+  "criteria": {
+    "get_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": [ "mbga:chrome" ] }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "mbga:what_does_it_mean"
+    },
+    "title": {
+      "translate": "advancements.mbga.what_does_it_mean.title"
+    },
+    "description": {
+      "translate": "advancements.mbga.what_does_it_mean.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "mbga:root",
+  "criteria": {
+    "get_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": [ "mbga:what_does_it_mean" ] }
+        ]
+      }
+    }
+  }
+}

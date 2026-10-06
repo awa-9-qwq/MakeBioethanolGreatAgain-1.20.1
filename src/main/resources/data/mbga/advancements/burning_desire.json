@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "mbga:ember_chestplate"
+    },
+    "title": {
+      "translate": "advancements.mbga.burning_desire.title"
+    },
+    "description": {
+      "translate": "advancements.mbga.burning_desire.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "mbga:root",
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "mbga:fertile_dirt"
+    },
+    "title": {
+      "translate": "advancements.mbga.fertile_dirt.title"
+    },
+    "description": {
+      "translate": "advancements.mbga.fertile_dirt.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "mbga:root",
+  "criteria": {
+    "get_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": [ "mbga:fertile_dirt" ] }
+        ]
+      }
+    }
+  }
+}

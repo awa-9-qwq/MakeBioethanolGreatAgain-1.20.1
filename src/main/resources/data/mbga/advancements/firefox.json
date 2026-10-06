@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "minecraft:fox_spawn_egg"
+    },
+    "title": {
+      "translate": "advancements.mbga.firefox.title"
+    },
+    "description": {
+      "translate": "advancements.mbga.firefox.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "mbga:root",
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

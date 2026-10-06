@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "mbga:bottle_of_fire"
+    },
+    "title": {
+      "translate": "advancements.mbga.bottle_of_fire.title"
+    },
+    "description": {
+      "translate": "advancements.mbga.bottle_of_fire.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "mbga:root",
+  "criteria": {
+    "get_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": [ "mbga:bottle_of_fire" ] }
+        ]
+      }
+    }
+  }
+}

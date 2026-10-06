@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "mbga:earth"
+    },
+    "title": {
+      "translate": "advancements.mbga.earth.title"
+    },
+    "description": {
+      "translate": "advancements.mbga.earth.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "mbga:root",
+  "criteria": {
+    "get_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": [ "mbga:earth" ] }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "mbga:purple_ice"
+    },
+    "title": {
+      "translate": "advancements.mbga.purple_ice.title"
+    },
+    "description": {
+      "translate": "advancements.mbga.purple_ice.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "mbga:root",
+  "criteria": {
+    "get_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": [ "mbga:purple_ice" ] }
+        ]
+      }
+    }
+  }
+}

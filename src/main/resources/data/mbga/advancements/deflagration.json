@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "mbga:bottle_of_fire"
+    },
+    "title": {
+      "translate": "advancements.mbga.deflagration.title"
+    },
+    "description": {
+      "translate": "advancements.mbga.deflagration.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "mbga:root",
+  "criteria": {
+    "get_effect": {
+      "trigger": "minecraft:effects_changed",
+      "conditions": {
+        "effects": {
+          "mbga:deflagration": {}
+        }
+      }
+    }
+  }
+}

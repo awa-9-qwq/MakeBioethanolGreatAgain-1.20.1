@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "mbga:sweet_roll_ring"
+    },
+    "title": {
+      "translate": "advancements.mbga.sweet_roll_ring.title"
+    },
+    "description": {
+      "translate": "advancements.mbga.sweet_roll_ring.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "mbga:root",
+  "criteria": {
+    "get_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": [ "mbga:sweet_roll_ring" ] }
+        ]
+      }
+    }
+  }
+}

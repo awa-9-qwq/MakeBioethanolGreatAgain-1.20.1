@@ -1,0 +1,28 @@
+{
+  "display": {
+    "icon": {
+      "item": "mbga:bioethanol_tea_drink"
+    },
+    "title": {
+      "translate": "advancements.mbga.super_burn.title"
+    },
+    "description": {
+      "translate": "advancements.mbga.super_burn.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "mbga:root",
+  "criteria": {
+    "get_effect": {
+      "trigger": "minecraft:effects_changed",
+      "conditions": {
+        "effects": {
+          "mbga:super_burn": {}
+        }
+      }
+    }
+  }
+}

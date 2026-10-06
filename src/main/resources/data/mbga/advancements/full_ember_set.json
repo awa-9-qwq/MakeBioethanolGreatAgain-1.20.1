@@ -1,0 +1,31 @@
+{
+  "display": {
+    "icon": {
+      "item": "mbga:ember_chestplate"
+    },
+    "title": {
+      "translate": "advancements.mbga.full_ember_set.title"
+    },
+    "description": {
+      "translate": "advancements.mbga.full_ember_set.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": false
+  },
+  "parent": "mbga:root",
+  "criteria": {
+    "get_item": {
+      "trigger": "minecraft:inventory_changed",
+      "conditions": {
+        "items": [
+          { "items": [ "mbga:ember_helmet" ] },
+          { "items": [ "mbga:ember_chestplate" ] },
+          { "items": [ "mbga:ember_leggings" ] },
+          { "items": [ "mbga:ember_boots" ] }
+        ]
+      }
+    }
+  }
+}

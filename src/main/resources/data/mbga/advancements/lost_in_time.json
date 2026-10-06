@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "mbga:singularity"
+    },
+    "title": {
+      "translate": "advancements.mbga.lost_in_time.title"
+    },
+    "description": {
+      "translate": "advancements.mbga.lost_in_time.description"
+    },
+    "frame": "challenge",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "mbga:root",
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "display": {
+    "icon": {
+      "item": "mbga:fire_arrow"
+    },
+    "title": {
+      "translate": "advancements.mbga.fire_arrow_boat.title"
+    },
+    "description": {
+      "translate": "advancements.mbga.fire_arrow_boat.description"
+    },
+    "frame": "task",
+    "show_toast": true,
+    "announce_to_chat": true,
+    "hidden": true
+  },
+  "parent": "mbga:root",
+  "criteria": {
+    "code": {
+      "trigger": "minecraft:impossible"
+    }
+  }
+}
