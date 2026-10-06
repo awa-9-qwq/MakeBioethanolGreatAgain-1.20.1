@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "mbga:space_superpressor",
+    "mbga:purple_ice",
+    "mbga:reinforced_deepslate",
+    "mbga:singularity_block",
+    "mbga:glowing_cobblestone",
+    "mbga:solid_oil",
+    "mbga:ember_metal_block"
+  ]
+}

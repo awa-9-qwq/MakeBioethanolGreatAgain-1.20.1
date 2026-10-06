@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "mbga:reinforced_deepslate",
+    "mbga:singularity_block",
+    "mbga:ember_metal_block"
+  ]
+}

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "mbga",
+  "version": "${version}",
+  "name": "MBGA",
+  "description": "A Create Crafts & Additions addon.",
+  "authors": [],
+  "contact": {},
+  "license": "All-Rights-Reserved",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.mbga.MBGA"
+    ],
+    "client": [
+      "com.mbga.client.MBGAClient"
+    ],
+    "jei_mod_plugin": [
+      "com.mbga.client.jei.MBGAJeiPlugin"
+    ]
+  },
+  "mixins": [
+    "mbga.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.17.2",
+    "minecraft": "~1.20.1",
+    "java": ">=17",
+    "fabric-api": "*",
+    "create": ">=0.5.1-j-build.1631",
+    "createaddition": ">=1.2.6",
+    "farmersdelight": ">=1.20.1-2.4.0",
+    "createoreexcavation": ">=1.5.4",
+    "create_enchantment_industry": ">=1.2.16"
+  },
+  "recommends": {
+    "jei": ">=15.20.0"
+  }
+}

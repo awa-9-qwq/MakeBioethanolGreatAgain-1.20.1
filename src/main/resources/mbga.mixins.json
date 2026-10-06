@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "package": "com.mbga.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "BlazeBurnerBlockEntityMixin",
+    "CactusBlockMixin",
+    "CropBlockMixin",
+    "ItemEntityMixin",
+    "MiningToolItemMixin",
+    "RecipeManagerMixin",
+    "SeaPickleBlockMixin",
+    "StemBlockMixin",
+    "SugarCaneBlockMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
