@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "facing=down,reversed=false": { "model": "mbga:block/small_windmill" },
+    "facing=down,reversed=true": { "model": "mbga:block/small_windmill" },
+    "facing=up,reversed=false": { "model": "mbga:block/small_windmill", "x": 180 },
+    "facing=up,reversed=true": { "model": "mbga:block/small_windmill", "x": 180 },
+    "facing=north,reversed=false": { "model": "mbga:block/small_windmill", "x": 90, "y": 180 },
+    "facing=north,reversed=true": { "model": "mbga:block/small_windmill", "x": 90, "y": 180 },
+    "facing=south,reversed=false": { "model": "mbga:block/small_windmill", "x": 90 },
+    "facing=south,reversed=true": { "model": "mbga:block/small_windmill", "x": 90 },
+    "facing=east,reversed=false": { "model": "mbga:block/small_windmill", "x": 90, "y": 270 },
+    "facing=east,reversed=true": { "model": "mbga:block/small_windmill", "x": 90, "y": 270 },
+    "facing=west,reversed=false": { "model": "mbga:block/small_windmill", "x": 90, "y": 90 },
+    "facing=west,reversed=true": { "model": "mbga:block/small_windmill", "x": 90, "y": 90 }
+  }
+}

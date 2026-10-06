@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "mbga:block/ember_cutting_board",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "mbga:block/ember_cutting_board"
+    },
+    "facing=south": {
+      "model": "mbga:block/ember_cutting_board",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "mbga:block/ember_cutting_board",
+      "y": 270
+    }
+  }
+}

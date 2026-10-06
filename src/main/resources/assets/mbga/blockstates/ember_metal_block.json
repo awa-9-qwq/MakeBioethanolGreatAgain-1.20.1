@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "mbga:block/ember_metal_block"
+    }
+  }
+}
