@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "top": "mbga:block/medium_windmill_group_top",
+    "bottom": "mbga:block/windmill_bottom",
+    "side": "mbga:block/medium_windmill_group_side"
+  }
+}

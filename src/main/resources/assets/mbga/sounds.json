@@ -1,0 +1,26 @@
+{
+  "weapon.tap": {
+    "sounds": [
+      {
+        "name": "mbga:weapon/tap",
+        "stream": false
+      }
+    ]
+  },
+  "weapon.flick": {
+    "sounds": [
+      {
+        "name": "mbga:weapon/flick",
+        "stream": false
+      }
+    ]
+  },
+  "weapon.drag": {
+    "sounds": [
+      {
+        "name": "mbga:weapon/drag",
+        "stream": false
+      }
+    ]
+  }
+}
