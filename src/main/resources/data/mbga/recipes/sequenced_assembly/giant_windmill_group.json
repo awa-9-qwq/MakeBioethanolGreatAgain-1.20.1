@@ -1,0 +1,33 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "mbga:large_windmill_group"
+  },
+  "loops": 127,
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "mbga:incomplete_windmill"
+        },
+        {
+          "item": "mbga:large_windmill_group"
+        }
+      ],
+      "results": [
+        {
+          "item": "mbga:incomplete_windmill"
+        }
+      ]
+    }
+  ],
+  "transitionalItem": {
+    "item": "mbga:incomplete_windmill"
+  },
+  "results": [
+    {
+      "item": "mbga:giant_windmill_group"
+    }
+  ]
+}

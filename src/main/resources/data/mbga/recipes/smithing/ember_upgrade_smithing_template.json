@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "mbga:singularity"
+  },
+  "base": {
+    "item": "minecraft:netherite_upgrade_smithing_template"
+  },
+  "addition": {
+    "item": "mbga:ember_metal_block"
+  },
+  "result": {
+    "item": "mbga:ember_upgrade_smithing_template"
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "create:sturdy_sheet"
+  },
+  "loops": 1,
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "mbga:incomplete_bioethanol_charm"
+        },
+        {
+          "item": "mbga:ruby_charm"
+        }
+      ],
+      "results": [
+        {
+          "item": "mbga:incomplete_bioethanol_charm"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "mbga:incomplete_bioethanol_charm"
+        },
+        {
+          "item": "mbga:topaz_charm"
+        }
+      ],
+      "results": [
+        {
+          "item": "mbga:incomplete_bioethanol_charm"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "mbga:incomplete_bioethanol_charm"
+        },
+        {
+          "item": "mbga:sapphire_charm"
+        }
+      ],
+      "results": [
+        {
+          "item": "mbga:incomplete_bioethanol_charm"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "mbga:incomplete_bioethanol_charm"
+        },
+        {
+          "item": "mbga:jade_charm"
+        }
+      ],
+      "results": [
+        {
+          "item": "mbga:incomplete_bioethanol_charm"
+        }
+      ]
+    },
+    {
+      "type": "create:filling",
+      "ingredients": [
+        {
+          "item": "mbga:incomplete_bioethanol_charm"
+        },
+        {
+          "amount": 81000,
+          "fluid": "createaddition:bioethanol"
+        }
+      ],
+      "results": [
+        {
+          "item": "mbga:incomplete_bioethanol_charm"
+        }
+      ]
+    }
+  ],
+  "transitionalItem": {
+    "item": "mbga:incomplete_bioethanol_charm"
+  },
+  "results": [
+    {
+      "item": "mbga:bioethanol_charm"
+    }
+  ]
+}

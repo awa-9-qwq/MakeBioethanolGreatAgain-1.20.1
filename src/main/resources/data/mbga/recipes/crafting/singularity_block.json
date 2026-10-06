@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "SS",
+    "SS"
+  ],
+  "key": {
+    "S": {
+      "item": "mbga:singularity"
+    }
+  },
+  "result": {
+    "item": "mbga:singularity_block"
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "type": "mbga:time_shift",
+  "ingredients": [
+    {
+      "item": "minecraft:raw_iron_block"
+    }
+  ],
+  "results": [
+    {
+      "count": 3,
+      "item": "minecraft:iron_ore"
+    }
+  ]
+}

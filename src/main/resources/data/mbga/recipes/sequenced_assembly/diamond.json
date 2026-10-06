@@ -1,0 +1,47 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "tag": "minecraft:coals"
+  },
+  "loops": 1000,
+  "sequence": [
+    {
+      "type": "create:filling",
+      "ingredients": [
+        {
+          "item": "mbga:incomplete_diamond"
+        },
+        {
+          "amount": 81,
+          "fluid": "createaddition:bioethanol"
+        }
+      ],
+      "results": [
+        {
+          "item": "mbga:incomplete_diamond"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "mbga:incomplete_diamond"
+        }
+      ],
+      "results": [
+        {
+          "item": "mbga:incomplete_diamond"
+        }
+      ]
+    }
+  ],
+  "transitionalItem": {
+    "item": "mbga:incomplete_diamond"
+  },
+  "results": [
+    {
+      "item": "minecraft:diamond"
+    }
+  ]
+}

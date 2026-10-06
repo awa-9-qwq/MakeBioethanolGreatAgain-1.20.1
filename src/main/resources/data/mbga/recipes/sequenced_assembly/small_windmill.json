@@ -1,0 +1,33 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "create:windmill_bearing"
+  },
+  "loops": 128,
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "mbga:incomplete_windmill"
+        },
+        {
+          "tag": "minecraft:wool"
+        }
+      ],
+      "results": [
+        {
+          "item": "mbga:incomplete_windmill"
+        }
+      ]
+    }
+  ],
+  "transitionalItem": {
+    "item": "mbga:incomplete_windmill"
+  },
+  "results": [
+    {
+      "item": "mbga:small_windmill"
+    }
+  ]
+}

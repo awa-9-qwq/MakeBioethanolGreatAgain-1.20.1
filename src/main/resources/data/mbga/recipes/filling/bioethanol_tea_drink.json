@@ -1,0 +1,18 @@
+{
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "minecraft:glass_bottle"
+    },
+    {
+      "amount": 16200,
+      "fluid": "createaddition:bioethanol",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "item": "mbga:bioethanol_tea_drink"
+    }
+  ]
+}

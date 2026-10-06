@@ -1,0 +1,40 @@
+{
+  "type": "create:compacting",
+  "ingredients": [
+    {
+      "item": "mbga:space_superpressor"
+    },
+    {
+      "item": "minecraft:deepslate"
+    },
+    {
+      "item": "minecraft:deepslate"
+    },
+    {
+      "item": "minecraft:deepslate"
+    },
+    {
+      "item": "minecraft:deepslate"
+    },
+    {
+      "item": "minecraft:deepslate"
+    },
+    {
+      "item": "minecraft:deepslate"
+    },
+    {
+      "item": "minecraft:deepslate"
+    },
+    {
+      "item": "minecraft:deepslate"
+    }
+  ],
+  "results": [
+    {
+      "item": "mbga:reinforced_deepslate"
+    },
+    {
+      "item": "mbga:space_superpressor"
+    }
+  ]
+}

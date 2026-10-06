@@ -1,0 +1,40 @@
+{
+  "type": "create:compacting",
+  "ingredients": [
+    {
+      "item": "mbga:space_superpressor"
+    },
+    {
+      "item": "minecraft:amethyst_block"
+    },
+    {
+      "item": "minecraft:amethyst_block"
+    },
+    {
+      "item": "minecraft:amethyst_block"
+    },
+    {
+      "item": "minecraft:amethyst_block"
+    },
+    {
+      "item": "minecraft:amethyst_block"
+    },
+    {
+      "item": "minecraft:amethyst_block"
+    },
+    {
+      "item": "minecraft:amethyst_block"
+    },
+    {
+      "item": "minecraft:amethyst_block"
+    }
+  ],
+  "results": [
+    {
+      "item": "mbga:geode"
+    },
+    {
+      "item": "mbga:space_superpressor"
+    }
+  ]
+}

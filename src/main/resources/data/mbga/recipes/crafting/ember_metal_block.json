@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "pattern": [
+    "EEE",
+    "EEE",
+    "EEE"
+  ],
+  "key": {
+    "E": {
+      "item": "mbga:ember_metal"
+    }
+  },
+  "result": {
+    "item": "mbga:ember_metal_block"
+  }
+}

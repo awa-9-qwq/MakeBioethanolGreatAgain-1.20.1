@@ -1,0 +1,40 @@
+{
+  "type": "create:compacting",
+  "ingredients": [
+    {
+      "item": "mbga:space_superpressor"
+    },
+    {
+      "item": "mbga:space_superpressor"
+    },
+    {
+      "item": "mbga:space_superpressor"
+    },
+    {
+      "item": "mbga:space_superpressor"
+    },
+    {
+      "item": "mbga:space_superpressor"
+    },
+    {
+      "item": "mbga:space_superpressor"
+    },
+    {
+      "item": "mbga:space_superpressor"
+    },
+    {
+      "item": "mbga:space_superpressor"
+    },
+    {
+      "item": "mbga:space_superpressor"
+    }
+  ],
+  "results": [
+    {
+      "item": "mbga:singularity"
+    },
+    {
+      "item": "mbga:space_superpressor"
+    }
+  ]
+}

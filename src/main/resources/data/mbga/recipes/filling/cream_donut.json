@@ -1,0 +1,17 @@
+{
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "mbga:donut"
+    },
+    {
+      "amount": 20250,
+      "fluidTag": "c:milk"
+    }
+  ],
+  "results": [
+    {
+      "item": "mbga:cream_donut"
+    }
+  ]
+}

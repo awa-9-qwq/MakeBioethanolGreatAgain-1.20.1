@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "item": "mbga:donut"
+    },
+    {
+      "item": "create:sweet_roll"
+    }
+  ],
+  "results": [
+    {
+      "item": "mbga:sweet_roll_ring"
+    }
+  ]
+}

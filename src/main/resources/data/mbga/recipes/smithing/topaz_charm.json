@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "mbga:singularity"
+  },
+  "base": {
+    "item": "mbga:topaz"
+  },
+  "addition": {
+    "item": "create:refined_radiance"
+  },
+  "result": {
+    "item": "mbga:topaz_charm"
+  }
+}

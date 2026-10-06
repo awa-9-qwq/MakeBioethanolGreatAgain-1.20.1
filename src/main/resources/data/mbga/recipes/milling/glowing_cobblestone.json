@@ -1,0 +1,21 @@
+{
+  "type": "create:milling",
+  "ingredients": [
+    {
+      "item": "mbga:glowing_cobblestone"
+    }
+  ],
+  "processingTime": 150,
+  "results": [
+    {
+      "item": "minecraft:cobblestone"
+    },
+    {
+      "item": "minecraft:glowstone_dust"
+    },
+    {
+      "chance": 0.1,
+      "item": "minecraft:glowstone_dust"
+    }
+  ]
+}

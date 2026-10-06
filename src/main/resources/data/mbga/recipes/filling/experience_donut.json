@@ -1,0 +1,17 @@
+{
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "mbga:donut"
+    },
+    {
+      "amount": 20250,
+      "fluid": "create_enchantment_industry:experience"
+    }
+  ],
+  "results": [
+    {
+      "item": "mbga:experience_donut"
+    }
+  ]
+}

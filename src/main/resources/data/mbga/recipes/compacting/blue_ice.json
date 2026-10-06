@@ -1,0 +1,20 @@
+{
+  "type": "create:compacting",
+  "ingredients": [
+    {
+      "item": "mbga:space_superpressor"
+    },
+    {
+      "amount": 81000,
+      "fluid": "minecraft:water"
+    }
+  ],
+  "results": [
+    {
+      "item": "minecraft:blue_ice"
+    },
+    {
+      "item": "mbga:space_superpressor"
+    }
+  ]
+}

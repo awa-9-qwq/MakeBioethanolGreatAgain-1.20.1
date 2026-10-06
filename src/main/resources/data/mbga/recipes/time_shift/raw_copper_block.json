@@ -1,0 +1,14 @@
+{
+  "type": "mbga:time_shift",
+  "ingredients": [
+    {
+      "item": "minecraft:raw_copper_block"
+    }
+  ],
+  "results": [
+    {
+      "count": 3,
+      "item": "minecraft:copper_ore"
+    }
+  ]
+}

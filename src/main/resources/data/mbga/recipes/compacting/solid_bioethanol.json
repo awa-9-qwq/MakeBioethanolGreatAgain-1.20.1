@@ -1,0 +1,20 @@
+{
+  "type": "create:compacting",
+  "ingredients": [
+    {
+      "item": "mbga:space_superpressor"
+    },
+    {
+      "amount": 81000,
+      "fluid": "createaddition:bioethanol"
+    }
+  ],
+  "results": [
+    {
+      "item": "mbga:solid_bioethanol"
+    },
+    {
+      "item": "mbga:space_superpressor"
+    }
+  ]
+}

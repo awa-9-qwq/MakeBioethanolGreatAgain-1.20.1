@@ -1,0 +1,64 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "mbga:donut"
+  },
+  "loops": 1,
+  "sequence": [
+    {
+      "type": "create:filling",
+      "ingredients": [
+        {
+          "item": "mbga:incomplete_onion_rings"
+        },
+        {
+          "amount": 810,
+          "fluid": "createaddition:seed_oil"
+        }
+      ],
+      "results": [
+        {
+          "item": "mbga:incomplete_onion_rings"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "mbga:incomplete_onion_rings"
+        },
+        {
+          "item": "farmersdelight:onion"
+        }
+      ],
+      "results": [
+        {
+          "item": "mbga:incomplete_onion_rings"
+        }
+      ]
+    },
+    {
+      "type": "create:cutting",
+      "ingredients": [
+        {
+          "item": "mbga:incomplete_onion_rings"
+        }
+      ],
+      "results": [
+        {
+          "item": "mbga:incomplete_onion_rings"
+        }
+      ]
+    }
+  ],
+  "transitionalItem": {
+    "item": "mbga:incomplete_onion_rings"
+  },
+  "results": [
+    {
+      "count": 7,
+      "item": "mbga:onion_rings"
+    }
+  ]
+}

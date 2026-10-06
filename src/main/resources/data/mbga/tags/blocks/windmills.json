@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "mbga:small_windmill",
+    "mbga:large_windmill",
+    "mbga:windmill_group",
+    "mbga:medium_windmill_group",
+    "mbga:large_windmill_group",
+    "mbga:giant_windmill_group"
+  ]
+}

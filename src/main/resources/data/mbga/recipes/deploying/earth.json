@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "item": "mbga:ring_dough"
+    },
+    {
+      "item": "minecraft:grass_block"
+    }
+  ],
+  "results": [
+    {
+      "item": "mbga:earth"
+    }
+  ]
+}

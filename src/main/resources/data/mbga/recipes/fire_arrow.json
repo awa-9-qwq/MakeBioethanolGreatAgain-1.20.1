@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "AAA",
+    "ABA",
+    "AAA"
+  ],
+  "key": {
+    "A": {
+      "item": "minecraft:arrow"
+    },
+    "B": {
+      "item": "mbga:bottle_of_fire"
+    }
+  },
+  "result": {
+    "item": "mbga:fire_arrow",
+    "count": 8
+  }
+}

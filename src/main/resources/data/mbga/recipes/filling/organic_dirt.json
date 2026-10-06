@@ -1,0 +1,17 @@
+{
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "minecraft:dirt"
+    },
+    {
+      "amount": 81000,
+      "fluid": "createaddition:bioethanol"
+    }
+  ],
+  "results": [
+    {
+      "item": "mbga:organic_dirt"
+    }
+  ]
+}

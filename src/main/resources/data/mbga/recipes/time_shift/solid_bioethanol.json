@@ -1,0 +1,13 @@
+{
+  "type": "mbga:time_shift",
+  "ingredients": [
+    {
+      "item": "mbga:solid_bioethanol"
+    }
+  ],
+  "results": [
+    {
+      "item": "mbga:solid_oil"
+    }
+  ]
+}

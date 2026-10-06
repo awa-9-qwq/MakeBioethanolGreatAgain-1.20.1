@@ -1,0 +1,16 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "item": "mbga:bioethanol_tea_drink"
+    },
+    {
+      "item": "minecraft:gunpowder"
+    }
+  ],
+  "results": [
+    {
+      "item": "mbga:splash_bioethanol"
+    }
+  ]
+}

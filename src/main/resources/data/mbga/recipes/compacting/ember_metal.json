@@ -1,0 +1,26 @@
+{
+  "type": "create:compacting",
+  "heatRequirement": "superheated",
+  "ingredients": [
+    {
+      "item": "mbga:solid_oil"
+    },
+    {
+      "item": "mbga:solid_oil"
+    },
+    {
+      "item": "mbga:solid_oil"
+    },
+    {
+      "item": "mbga:bottle_of_fire"
+    },
+    {
+      "item": "minecraft:netherite_ingot"
+    }
+  ],
+  "results": [
+    {
+      "item": "mbga:ember_metal"
+    }
+  ]
+}

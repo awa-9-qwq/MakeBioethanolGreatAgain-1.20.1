@@ -1,0 +1,46 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "minecraft:shulker_box"
+  },
+  "loops": 3,
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "mbga:incomplete_space_superpressor"
+        },
+        {
+          "item": "minecraft:shulker_box"
+        }
+      ],
+      "results": [
+        {
+          "item": "mbga:incomplete_space_superpressor"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "mbga:incomplete_space_superpressor"
+        }
+      ],
+      "results": [
+        {
+          "item": "mbga:incomplete_space_superpressor"
+        }
+      ]
+    }
+  ],
+  "transitionalItem": {
+    "item": "mbga:incomplete_space_superpressor"
+  },
+  "results": [
+    {
+      "item": "mbga:space_superpressor"
+    }
+  ]
+}

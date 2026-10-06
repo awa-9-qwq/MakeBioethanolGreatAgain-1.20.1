@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "DDD",
+    "D D",
+    "DDD"
+  ],
+  "key": {
+    "D": {
+      "item": "farmersdelight:wheat_dough"
+    }
+  },
+  "result": {
+    "count": 8,
+    "item": "mbga:ring_dough"
+  }
+}

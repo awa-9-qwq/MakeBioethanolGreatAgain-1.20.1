@@ -1,0 +1,14 @@
+{
+  "type": "mbga:bottle_of_fire",
+  "ingredients": [
+    {
+      "item": "mbga:splash_bioethanol"
+    },
+    {
+      "item": "minecraft:flint_and_steel"
+    }
+  ],
+  "result": {
+    "item": "mbga:bottle_of_fire"
+  }
+}

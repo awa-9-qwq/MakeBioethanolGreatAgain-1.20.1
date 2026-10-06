@@ -1,0 +1,60 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "mbga:geode"
+  },
+  "loops": 5,
+  "sequence": [
+    {
+      "type": "create:filling",
+      "ingredients": [
+        {
+          "item": "mbga:incomplete_gemstone"
+        },
+        {
+          "amount": 8100,
+          "fluid": "createaddition:bioethanol"
+        }
+      ],
+      "results": [
+        {
+          "item": "mbga:incomplete_gemstone"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "mbga:incomplete_gemstone"
+        }
+      ],
+      "results": [
+        {
+          "item": "mbga:incomplete_gemstone"
+        }
+      ]
+    }
+  ],
+  "transitionalItem": {
+    "item": "mbga:incomplete_gemstone"
+  },
+  "results": [
+    {
+      "chance": 0.02,
+      "item": "mbga:ruby"
+    },
+    {
+      "chance": 0.02,
+      "item": "mbga:topaz"
+    },
+    {
+      "chance": 0.02,
+      "item": "mbga:sapphire"
+    },
+    {
+      "chance": 0.02,
+      "item": "mbga:jade"
+    }
+  ]
+}

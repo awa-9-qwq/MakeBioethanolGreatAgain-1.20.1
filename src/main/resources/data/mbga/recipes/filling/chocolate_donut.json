@@ -1,0 +1,17 @@
+{
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "mbga:donut"
+    },
+    {
+      "amount": 20250,
+      "fluid": "create:chocolate"
+    }
+  ],
+  "results": [
+    {
+      "item": "mbga:chocolate_donut"
+    }
+  ]
+}
