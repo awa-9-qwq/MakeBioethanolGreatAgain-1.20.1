@@ -1,17 +1,24 @@
 package com.mbga.mixin;
 
+import com.mbga.MBGA;
 import com.mbga.block.MBGABlocks;
 import com.mbga.item.MBGAItems;
 import com.mbga.item.SingularityItem;
+import net.minecraft.block.BlockState;
 import net.minecraft.entity.ItemEntity;
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.item.ItemStack;
 import net.minecraft.registry.tag.DamageTypeTags;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3d;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import vectorwing.farmersdelight.common.registry.ModBlocks;
+import com.mbga.block.MBGABlocks;
 
 /**
  * 让「奇点」与「奇点块」的掉落物：免疫虚空、免疫爆炸。
@@ -61,4 +68,40 @@ public abstract class ItemEntityMixin {
             cir.setReturnValue(false);
         }
     }
-}
+
+        @Unique
+        private double mbga$oldX;
+
+        @Unique
+        private double mbga$oldZ;
+
+        @Unique
+        private boolean mbga$hasOldVelocity;
+
+        @Inject(method = "tick", at = @At("HEAD"))
+        private void mbga$saveVelocity(CallbackInfo ci) {
+            ItemEntity entity = (ItemEntity) (Object) this;
+            Vec3d velocity = entity.getVelocity();
+
+            mbga$oldX = velocity.x;
+            mbga$oldZ = velocity.z;
+            mbga$hasOldVelocity = true;
+        }
+
+        @Inject(method = "tick", at = @At("TAIL"))
+        private void mbga$restoreVelocity(CallbackInfo ci) {
+            ItemEntity entity = (ItemEntity) (Object) this;
+
+            if (!mbga$hasOldVelocity || !entity.isOnGround()) {
+                return;
+            }
+
+            BlockPos pos = entity.getSteppingPos();
+            BlockState state = entity.getWorld().getBlockState(pos);
+
+            if (state.isOf(MBGABlocks.PURPLE_ICE)) {
+                Vec3d velocity = entity.getVelocity();
+                entity.setVelocity(mbga$oldX, velocity.y, mbga$oldZ);
+            }
+        }
+    }

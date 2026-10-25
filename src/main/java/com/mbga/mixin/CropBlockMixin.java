@@ -1,5 +1,6 @@
 package com.mbga.mixin;
 
+import com.llamalad7.mixinextras.lib.antlr.runtime.atn.SemanticContext;
 import com.mbga.block.MBGABlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropBlock;
@@ -10,8 +11,9 @@ import net.minecraft.world.WorldView;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 
 /**
  * 让所有 {@link CropBlock} 作物（小麦、胡萝卜、马铃薯、甜菜等）可以：
@@ -41,13 +43,13 @@ public abstract class CropBlockMixin {
     }
 
     /** 原版：{@code if (world.getBaseLightLevel(pos, 0) >= 9)}；在富饶泥土上视为满足亮度。 */
-    @Redirect(
+    @WrapOperation(
             method = "randomTick",
             at = @At(
                     value = "INVOKE",
                     target = "Lnet/minecraft/server/world/ServerWorld;getBaseLightLevel(Lnet/minecraft/util/math/BlockPos;I)I"))
-    private int mbga$growInDarkness(ServerWorld world, BlockPos pos, int minLight) {
-        int light = world.getBaseLightLevel(pos, minLight);
+    private int mbga$growInDarkness(ServerWorld world, BlockPos pos, int minLight, Operation<Integer> original) {
+        int light = original.call(world, pos, minLight);
         return world.getBlockState(pos.down()).isOf(MBGABlocks.FERTILE_DIRT) ? Math.max(light, 9) : light;
     }
 }

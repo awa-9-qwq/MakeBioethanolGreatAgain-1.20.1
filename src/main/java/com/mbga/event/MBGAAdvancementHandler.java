@@ -101,7 +101,7 @@ public final class MBGAAdvancementHandler {
 
     /**
      * 欲火焚身：穿着全套（4 件）余烬盔甲时连续累计受到 20 点火焰伤害。
-     * 由 {@link MBGAEventHandlers#onDamage} 在火焰伤害结算前调用。
+     * 由 @link MBGAEventHandlers#onDamage 在火焰伤害结算前调用。
      */
     public static void onFireDamage(PlayerEntity player, float amount) {
         if (!(player instanceof ServerPlayerEntity serverPlayer)) {
