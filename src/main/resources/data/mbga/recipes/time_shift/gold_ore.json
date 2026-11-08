@@ -2,12 +2,12 @@
   "type": "mbga:time_shift",
   "ingredients": [
     {
-      "item": "minecraft:gold_ore"
+      "item": "minecraft:gold_block"
     }
   ],
   "results": [
     {
-      "count": 3,
+      "count": 5,
       "item": "minecraft:gold_ore"
     }
   ]

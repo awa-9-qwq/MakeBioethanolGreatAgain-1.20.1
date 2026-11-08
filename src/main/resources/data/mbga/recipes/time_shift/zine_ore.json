@@ -1,0 +1,14 @@
+{
+  "type": "mbga:time_shift",
+  "ingredients": [
+    {
+      "item": "create:zinc_block"
+    }
+  ],
+  "results": [
+    {
+      "count": 5,
+      "item": "create:zinc_ore"
+    }
+  ]
+}

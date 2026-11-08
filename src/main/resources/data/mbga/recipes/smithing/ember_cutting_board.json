@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:smithing_transform",
+  "template": {
+    "item": "mbga:ember_upgrade_smithing_template"
+  },
+  "base": {
+    "item": "farmersdelight:cutting_board"
+  },
+  "addition": {
+    "item": "mbga:ember_metal"
+  },
+  "result": {
+    "item": "mbga:ember_cutting_board"
+  }
+}

@@ -23,6 +23,7 @@ import com.mbga.recipe.TimeShiftProcessingType;
 import com.mbga.sound.MBGASounds;
 import com.simibubi.create.content.kinetics.fan.processing.FanProcessingTypeRegistry;
 import net.fabricmc.api.ModInitializer;
+import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.item.ItemStack;
 import net.minecraft.text.Text;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
@@ -102,15 +103,6 @@ public class MBGA implements ModInitializer {
                     .build());
 
     // ---- 配方（瓶中火：打火石消耗耐久）----
-    public static final RecipeType<BottleOfFireRecipe> BOTTLE_OF_FIRE_RECIPE_TYPE = Registry.register(
-            Registries.RECIPE_TYPE,
-            new Identifier(MOD_ID, "bottle_of_fire"),
-            new RecipeType<BottleOfFireRecipe>() {
-                @Override
-                public String toString() {
-                    return MOD_ID + ":bottle_of_fire";
-                }
-            });
 
     public static final RecipeSerializer<BottleOfFireRecipe> BOTTLE_OF_FIRE_RECIPE_SERIALIZER = Registry.register(
             Registries.RECIPE_SERIALIZER,
@@ -134,10 +126,14 @@ public class MBGA implements ModInitializer {
         MBGARecipeTypes.register();
         FanProcessingTypeRegistry.register(new Identifier(MOD_ID, "time_shift"), new TimeShiftProcessingType());
 
-        // 联动内容（对应模组由 fabric.mod.json 的 depends 声明）。
-        MBGAProspectors.register();
-        MBGAFarmersDelight.register();
-        MBGAFarmersDelight.registerEmberKnife();
+        // 联动内容：对应模组只是 recommends，缺失时完全不加载这些类，因此不会报错。
+        if (FabricLoader.getInstance().isModLoaded("createorexcavation") || FabricLoader.getInstance().isModLoaded("createoreexcavation")) {
+            MBGAProspectors.register();
+        }
+        if (FabricLoader.getInstance().isModLoaded("farmersdelight")) {
+            MBGAFarmersDelight.register();
+            MBGAFarmersDelight.registerEmberKnife();
+        }
         MBGAWindmills.register();
 
         Registry.register(Registries.ITEM, new Identifier(MOD_ID, "bioethanol_tea_drink"), BIOETHANOL_TEA_DRINK);
@@ -167,7 +163,10 @@ public class MBGA implements ModInitializer {
                             entries.add(MBGABlocks.FERTILE_DIRT);
                             entries.add(MBGABlocks.SOLID_OIL);
                             entries.add(MBGABlocks.EMBER_METAL_BLOCK);
-                            entries.add(MBGAFarmersDelight.EMBER_CUTTING_BOARD);
+                            if (FabricLoader.getInstance().isModLoaded("farmersdelight")) {
+                                entries.add(MBGAFarmersDelight.EMBER_CUTTING_BOARD);
+                                entries.add(MBGAFarmersDelight.EMBER_KNIFE);
+                            }
                             MBGAWindmills.allBlocks().forEach(entries::add);
                             entries.add(MBGAItems.GEODE);
                             entries.add(MBGAItems.RUBY);
@@ -194,6 +193,9 @@ public class MBGA implements ModInitializer {
                             entries.add(MBGAItems.EMBER_CHESTPLATE);
                             entries.add(MBGAItems.EMBER_LEGGINGS);
                             entries.add(MBGAItems.EMBER_BOOTS);
+                            entries.add(MBGAItems.EMBER_DIVING_HELMET);
+                            entries.add(MBGAItems.EMBER_BACKTANK);
+                            entries.add(MBGAItems.EMBER_DIVING_BOOTS);
                             entries.add(MBGAItems.RING_DOUGH);
                             entries.add(MBGAItems.EARTH);
                             entries.add(MBGAItems.DONUT);
@@ -204,9 +206,10 @@ public class MBGA implements ModInitializer {
                             entries.add(MBGAItems.ONION_RINGS);
                             entries.add(MBGAItems.EXPERIENCE_DONUT);
                             entries.add(MBGAItems.WHAT_DOES_IT_MEAN);
-                            entries.add(MBGAFarmersDelight.EMBER_KNIFE);
-                            entries.add(MBGAProspectors.NETHERITE_PROSPECTOR);
-                            entries.add(MBGAProspectors.EMBER_PROSPECTOR);
+                            if (FabricLoader.getInstance().isModLoaded("createoreexcavation")) {
+                                entries.add(MBGAProspectors.NETHERITE_PROSPECTOR);
+                                entries.add(MBGAProspectors.EMBER_PROSPECTOR);
+                            }
                         })
                         .build());
         MBGAEventHandlers.register();

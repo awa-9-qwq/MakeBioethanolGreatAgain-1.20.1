@@ -21,7 +21,7 @@ public class BottleOfFireRecipe extends ShapelessRecipe {
 
     @Override
     public net.minecraft.recipe.RecipeType<?> getType() {
-        return MBGA.BOTTLE_OF_FIRE_RECIPE_TYPE;
+        return net.minecraft.recipe.RecipeType.CRAFTING;
     }
 
     @Override
@@ -29,21 +29,4 @@ public class BottleOfFireRecipe extends ShapelessRecipe {
         return MBGA.BOTTLE_OF_FIRE_RECIPE_SERIALIZER;
     }
 
-    @Override
-    public DefaultedList<ItemStack> getRemainder(RecipeInputInventory inventory) {
-        DefaultedList<ItemStack> remainders = super.getRemainder(inventory);
-        for (int i = 0; i < remainders.size(); i++) {
-            ItemStack stack = inventory.getStack(i);
-            if (stack.getItem() instanceof FlintAndSteelItem) {
-                ItemStack damaged = stack.copy();
-                damaged.setDamage(damaged.getDamage() + 1);
-                if (damaged.getDamage() >= damaged.getMaxDamage()) {
-                    remainders.set(i, ItemStack.EMPTY);
-                } else {
-                    remainders.set(i, damaged);
-                }
-            }
-        }
-        return remainders;
-    }
 }

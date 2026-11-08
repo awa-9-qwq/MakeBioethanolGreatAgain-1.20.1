@@ -2,12 +2,12 @@
   "type": "mbga:time_shift",
   "ingredients": [
     {
-      "item": "minecraft:iron_ore"
+      "item": "minecraft:iron_block"
     }
   ],
   "results": [
     {
-      "count": 3,
+      "count": 5,
       "item": "minecraft:iron_ore"
     }
   ]

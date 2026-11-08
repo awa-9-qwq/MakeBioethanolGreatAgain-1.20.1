@@ -36,7 +36,6 @@ import net.minecraft.world.WorldView;
  * </ul>
  *
  * <p>动能契约：{@link IBE#getTicker} 的默认实现会在方块实体是 {@code SmartBlockEntity} 子类时返回
- * {@code SmartBlockEntityTicker}，因此本方块不需要自己写 ticker；转速方向由
  * {@link WindmillBlockEntity#getGeneratedSpeed()} 提供，应力容量由
  * {@link WindmillBlockEntity#calculateAddedStressCapacity()} 提供。
  */

@@ -1,10 +1,15 @@
 package com.mbga.block;
 
 import com.mbga.MBGA;
+import com.mbga.block.entity.EmberBacktankBlockEntity;
 import com.mbga.block.entity.FertileDirtBlockEntity;
+import com.mbga.item.MBGAItems;
+import com.simibubi.create.content.equipment.armor.BacktankItem;
+import com.simibubi.create.content.kinetics.BlockStressDefaults;
 import net.fabricmc.fabric.api.object.builder.v1.block.entity.FabricBlockEntityTypeBuilder;
 import net.fabricmc.fabric.api.registry.FuelRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.block.Blocks;
 import net.minecraft.block.MapColor;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.TransparentBlock;
@@ -56,9 +61,20 @@ public final class MBGABlocks {
     public static Block SOLID_OIL;
     /** 余烬金属块：3×3 余烬金属合成，也是余烬升级模板配方里的材料。 */
     public static Block EMBER_METAL_BLOCK;
+    /** 余烬背罐（放下后的方块形态）：接传动杆按转速充气，空手右键可直接穿上。 */
+    public static Block EMBER_BACKTANK;
+    /**
+     * 余烬背罐的「可放置」物品。
+     *
+     * <p>Create 的背罐同时是「可穿戴物品」与「方块」，两者不能是同一个 Item，所以拆成两个：
+     * 本物品负责放置方块，真正的穿戴物品是 {@link MBGAItems#EMBER_BACKTANK}（保存空气 / 附魔）。
+     * 它的模型是屏障（{@code minecraft:item/barrier}），不在创造模式物品栏里出现。
+     */
+    public static BacktankItem.BacktankBlockItem EMBER_BACKTANK_PLACEABLE;
 
     // ---- 方块实体 ----
     public static BlockEntityType<FertileDirtBlockEntity> FERTILE_DIRT_BLOCK_ENTITY;
+    public static BlockEntityType<EmberBacktankBlockEntity> EMBER_BACKTANK_ENTITY;
 
     private MBGABlocks() {
     }
@@ -143,6 +159,23 @@ public final class MBGABlocks {
                 Registries.BLOCK_ENTITY_TYPE,
                 new Identifier(MBGA.MOD_ID, "fertile_dirt"),
                 FabricBlockEntityTypeBuilder.create(FertileDirtBlockEntity::new, FERTILE_DIRT).build());
+
+        // ---- 余烬背罐（参照 Create 的 copper_backtank / netherite_backtank）----
+        // 方块属性直接沿用下界合金块（需要工具、50/1200、下界合金音效），与 Create 的
+        // SharedProperties#netheriteMetal 一致。
+        EMBER_BACKTANK = new EmberBacktankBlock(AbstractBlock.Settings.copy(Blocks.NETHERITE_BLOCK));
+        Identifier backtankId = new Identifier(MBGA.MOD_ID, "ember_backtank");
+        Registry.register(Registries.BLOCK, backtankId, EMBER_BACKTANK);
+        EMBER_BACKTANK_PLACEABLE = Registry.register(Registries.ITEM,
+                new Identifier(MBGA.MOD_ID, "ember_backtank_placeable"),
+                new BacktankItem.BacktankBlockItem(EMBER_BACKTANK, () -> MBGAItems.EMBER_BACKTANK,
+                        new Item.Settings().fireproof()));
+        EMBER_BACKTANK_ENTITY = Registry.register(
+                Registries.BLOCK_ENTITY_TYPE,
+                backtankId,
+                FabricBlockEntityTypeBuilder.create(EmberBacktankBlockEntity::new, EMBER_BACKTANK).build());
+        // 与 Create 的背罐一致：接上传动杆后按转速充气，本身消耗 4 SU/RPM。
+        BlockStressDefaults.setDefaultImpact(backtankId, 4.0);
 
         // ---- 燃料 ----
         FuelRegistry.INSTANCE.add(SOLID_BIOETHANOL.asItem(), SOLID_BIOETHANOL_BURN_TICKS);

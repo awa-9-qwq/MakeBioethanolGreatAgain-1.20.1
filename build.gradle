@@ -81,3 +81,18 @@ publishing {
         // Add repositories to publish to here.
     }
 }
+
+// ---------------------------------------------------------------------------
+// 每次构建结束后，把发布 jar（和 sources jar）归档到 dist/。
+// dist/ 在 build/ 之外，因此 `clean` 不会删除历史版本的产物。
+// ---------------------------------------------------------------------------
+tasks.register('archiveArtifact', Copy) {
+    dependsOn tasks.named('remapJar')
+    from(tasks.named('remapJar'))
+    from(tasks.named('remapSourcesJar'))
+    into(layout.projectDirectory.dir('dist'))
+}
+
+tasks.named('build') {
+    finalizedBy 'archiveArtifact'
+}

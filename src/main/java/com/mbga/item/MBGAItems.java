@@ -1,6 +1,7 @@
 package com.mbga.item;
 
 import com.mbga.MBGA;
+import com.mbga.block.MBGABlocks;
 import com.mbga.item.charm.BioethanolCharmItem;
 import com.mbga.item.charm.CharmItem;
 import com.mbga.item.charm.JadeCharmItem;
@@ -9,7 +10,11 @@ import com.mbga.item.charm.SapphireCharmItem;
 import com.mbga.item.charm.TopazCharmItem;
 import com.mbga.item.equipment.EmberArmorItem;
 import com.mbga.item.equipment.EmberAxeItem;
+import com.mbga.item.equipment.EmberBacktankItem;
+import com.mbga.item.equipment.EmberDivingBootsItem;
+import com.mbga.item.equipment.EmberDivingHelmetItem;
 import com.mbga.item.equipment.EmberHoeItem;
+import com.mbga.item.equipment.EmberMaterials;
 import com.mbga.item.equipment.EmberPickaxeItem;
 import com.mbga.item.equipment.EmberShovelItem;
 import com.mbga.item.equipment.EmberSwordItem;
@@ -78,6 +83,12 @@ public final class MBGAItems {
     public static Item EMBER_CHESTPLATE;
     public static Item EMBER_LEGGINGS;
     public static Item EMBER_BOOTS;
+    /** 余烬潜水头盔（Create 潜水头盔子类：水下 / 熔岩呼吸）。 */
+    public static Item EMBER_DIVING_HELMET;
+    /** 余烬潜水靴（Create 潜水靴子类：水中 / 熔岩中加速下潜）。 */
+    public static Item EMBER_DIVING_BOOTS;
+    /** 余烬背罐：储气上限是同附魔等级下界合金背罐的 2 倍。 */
+    public static Item EMBER_BACKTANK;
 
     // ---- 序列组装用的半成品 ----
     public static Item INCOMPLETE_SPACE_SUPERPRESSOR;
@@ -158,6 +169,14 @@ public final class MBGAItems {
                 new EmberArmorItem(ArmorItem.Type.LEGGINGS, new Item.Settings().maxCount(1).fireproof()));
         EMBER_BOOTS = register("ember_boots",
                 new EmberArmorItem(ArmorItem.Type.BOOTS, new Item.Settings().maxCount(1).fireproof()));
+
+        // 余烬潜水套装（Create 潜水装备的子类）+ 余烬背罐（储气量 = 下界合金背罐 × 2）。
+        EMBER_DIVING_HELMET = register("ember_diving_helmet", new EmberDivingHelmetItem(EmberMaterials.ARMOR,
+                new Item.Settings().maxCount(1).fireproof()));
+        EMBER_BACKTANK = register("ember_backtank", new EmberBacktankItem(EmberMaterials.ARMOR,
+                new Item.Settings().maxCount(1).fireproof(), () -> MBGABlocks.EMBER_BACKTANK_PLACEABLE));
+        EMBER_DIVING_BOOTS = register("ember_diving_boots", new EmberDivingBootsItem(EmberMaterials.ARMOR,
+                new Item.Settings().maxCount(1).fireproof()));
 
         // 序列组装中间产物。
         INCOMPLETE_SPACE_SUPERPRESSOR = register("incomplete_space_superpressor", new Item(new Item.Settings()));

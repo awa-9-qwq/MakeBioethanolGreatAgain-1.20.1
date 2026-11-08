@@ -3,6 +3,8 @@
   "package": "com.mbga.mixin",
   "compatibilityLevel": "JAVA_17",
   "mixins": [
+    "BacktankBlockEntityMixin",
+    "BacktankUtilMixin",
     "BlazeBurnerBlockEntityMixin",
     "CactusBlockMixin",
     "CropBlockMixin",

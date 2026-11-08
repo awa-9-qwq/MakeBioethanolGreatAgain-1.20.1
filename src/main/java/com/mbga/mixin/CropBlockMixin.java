@@ -1,6 +1,5 @@
 package com.mbga.mixin;
 
-import com.llamalad7.mixinextras.lib.antlr.runtime.atn.SemanticContext;
 import com.mbga.block.MBGABlocks;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CropBlock;

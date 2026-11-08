@@ -7,6 +7,7 @@
     "mbga:singularity_block",
     "mbga:glowing_cobblestone",
     "mbga:solid_oil",
-    "mbga:ember_metal_block"
+    "mbga:ember_metal_block",
+    "mbga:ember_backtank"
   ]
 }
