@@ -8,25 +8,8 @@
       "item": "minecraft:blue_ice"
     },
     {
-      "item": "minecraft:blue_ice"
-    },
-    {
-      "item": "minecraft:blue_ice"
-    },
-    {
-      "item": "minecraft:blue_ice"
-    },
-    {
-      "item": "minecraft:blue_ice"
-    },
-    {
-      "item": "minecraft:blue_ice"
-    },
-    {
-      "item": "minecraft:blue_ice"
-    },
-    {
-      "item": "minecraft:blue_ice"
+      "amount": 81000,
+      "fluid": "minecraft:water"
     }
   ],
   "results": [
